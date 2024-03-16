@@ -21,3 +21,8 @@ spring:
     url: ${HEROKU_POSTGRESQL_URL}
     username: ${HEROKU_POSTGRESQL_USERNAME}
     password: ${HEROKU_POSTGRESQL_PASSWORD}
+jwt:
+  secret:
+    key: ${jwt.secret.key}
+  token:
+    expired-time-ms: ${jwt.token.expired-time-ms}

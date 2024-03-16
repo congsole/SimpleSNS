@@ -1,8 +1,10 @@
 package com.congsole.SimpleSNS.controller;
 
 import com.congsole.SimpleSNS.controller.request.UserJoinRequest;
+import com.congsole.SimpleSNS.controller.request.UserLoginRequest;
 import com.congsole.SimpleSNS.controller.response.Response;
 import com.congsole.SimpleSNS.controller.response.UserJoinResponse;
+import com.congsole.SimpleSNS.controller.response.UserLoginResponse;
 import com.congsole.SimpleSNS.model.User;
 import com.congsole.SimpleSNS.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +26,9 @@ public class UserController {
         return Response.success(UserJoinResponse.fromUser(user));
     }
 
-    @GetMapping("/login")
-    public void login() {
-
+    @PostMapping("/login")
+    public Response<UserLoginResponse> login(@RequestBody UserLoginRequest request) {
+        String token = userService.login(request.getUserName(), request.getPassword());
+        return Response.success(new UserLoginResponse(token));
     }
 }
