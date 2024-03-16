@@ -1,1 +1,23 @@
-spring.application.name=SimpleSNS
+spring:
+
+  application:
+    name: SimpleSNS
+
+  jpa:
+    database: postgresql
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialenct
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+  datasource:
+    hikari:
+      maximum-pool-size: 4
+    driver-class-name: org.postgresql.Driver
+    platform: postgres
+    url: ${HEROKU_POSTGRESQL_URL}
+    username: ${HEROKU_POSTGRESQL_USERNAME}
+    password: ${HEROKU_POSTGRESQL_PASSWORD}
